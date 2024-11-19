@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        // Script for toggling the mobile menu
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+    </script>
+</head>
+<body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
+
+    <!-- Header -->
+    <header class="bg-white shadow">
+        <div class="container mx-auto flex justify-between items-center p-5">
+            <a href="#" class="text-2xl font-bold text-blue-600">MyDigitalStore</a>
+            <nav class="space-x-4 hidden md:flex">
+                <a href="/" class="text-gray-600 hover:text-blue-600">Home</a>
+                
+            </nav>
+
+            <!-- Mobile Menu Icon -->
+            <button class="md:hidden text-gray-600" onclick="toggleMenu()">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white shadow p-5 space-y-4">
+            <a href="/" class="text-gray-600 hover:text-blue-600">Home</a>
+            
+    </header>
+
+    <!-- Products Section -->
+    <section class="py-16 flex-1">
+        <div class="container mx-auto">
+            <h1 class="text-4xl font-bold text-center mb-10">Our Products</h1>
+            <div class="grid gap-6 md:grid-cols-3 sm:grid-cols-2">
+                {% for product in product %}
+                <div class="bg-white rounded-lg shadow p-6">
+                    <img src="{{ product.image.url }}" alt="{{ product.name }}" class="w-full rounded mb-4">
+                    <h2 class="text-xl font-bold mb-2">{{ product.name }}</h2>
+                    
+                    <p class="text-gray-800 font-semibold mb-4">₹{{ product.price }}</p>
+                    <p class="text-gray-600 mb-4">{{ product.description|truncatewords:20 }}</p>
+                    <a href="{% url 'product_detail' product.id %}" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Buy Now</a>
+                </div>
+                {% empty %}
+                <p class="text-center col-span-full text-gray-600">No products available at the moment.</p>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-6 mt-auto">
+        <div class="container mx-auto text-center">
+            <p>&copy; 2024 MyDigitalStore. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

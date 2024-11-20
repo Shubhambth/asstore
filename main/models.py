@@ -18,6 +18,8 @@ class Purchase(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='purchases')
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='purchases')
     payment_screenshot = models.ImageField(upload_to='payment_screenshots/')
+    name = models.CharField(max_length=100 , default='your name')
+    mobile_number = models.CharField(max_length=20 , default='your number')
     email = models.EmailField(default='example@gmail.com')
     purchased_at = models.DateTimeField(auto_now_add=True)
 

@@ -4,7 +4,7 @@ from .models import Purchase, Product
 class PurchaseForm(forms.ModelForm):
     class Meta:
         model = Purchase
-        fields = ['product', 'payment_screenshot' , 'email']
+        fields = ['product', 'payment_screenshot' ,'name', 'mobile_number' , 'email']
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

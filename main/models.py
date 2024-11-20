@@ -29,6 +29,6 @@ class Purchase(models.Model):
 
 
 class PaymentQr(models.Model):
-    qr_image = models.ImageField(upload_to='qrimage/')
+    qr_image = models.ImageField(upload_to='qrimage/')  
 
     

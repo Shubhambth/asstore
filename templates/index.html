@@ -11,7 +11,7 @@
     <!-- Header -->
     <header class="bg-white shadow">
         <div class="container mx-auto flex justify-between items-center p-5">
-            <a href="/" class="text-2xl font-bold text-blue-600">MyDigitalStore</a>
+            <a href="/" class="text-2xl font-bold text-blue-600">AS DigiProducts</a>
             <!-- Desktop Navigation -->
             <nav class="hidden md:flex space-x-4">
                  {% if user.is_authenticated %}
@@ -31,9 +31,13 @@
         </div>
         <!-- Mobile Dropdown Menu -->
         <div id="menu" class="hidden md:hidden bg-white shadow-md">
+            {% if user.is_authenticated %}
+            <a href="{% url 'logout' %}" class="block px-4 py-2 text-gray-600 hover:text-blue-600">Logout</a>
+            {% else %}
             <a href="{% url 'login' %}" class="block px-4 py-2 text-gray-600 hover:text-blue-600">Login</a>
             <a href="{% url 'register' %}" class="block px-4 py-2 text-gray-600 hover:text-blue-600">Register</a>
-            <a href="{% url 'logout' %}" class="block px-4 py-2 text-gray-600 hover:text-blue-600">Logout</a>
+            {% endif %}
+            
         </div>
     </header>
 
@@ -62,8 +66,8 @@
                     <p>Enjoy a seamless and secure checkout experience.</p>
                 </div>
                 <div class="bg-white p-6 rounded-lg shadow">
-                    <h3 class="text-xl font-bold mb-2">Instant Downloads</h3>
-                    <p>Access your purchases immediately after payment.</p>
+                    <h3 class="text-xl font-bold mb-2">Download Link On Mail</h3>
+                    <p>Access your purchases after payment through mail.</p>
                 </div>
             </div>
         </div>

@@ -29,6 +29,6 @@ class Purchase(models.Model):
 
 
 class PaymentQr(models.Model):
-    qr_image = models.ImageField(upload_to='qrimage/')  
+    qr_image = models.URLField(max_length=5000 , default='https://i.postimg.cc/MHHY0gBd/qrcode.jpg')  
 
     

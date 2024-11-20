@@ -26,6 +26,7 @@ SECRET_KEY = 'django-insecure-gy-4lv930l3boej-qf&hfe_txl02a1v&tmfhz(s)ypul8)%jt4
 DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
+CSRF_TRUSTED_ORIGINS = ['https://*.pike.replit.dev/']
 
 
 # Application definition
@@ -91,7 +92,7 @@ DATABASES = {
         'NAME':'railway',
         'USER': 'postgres',
         'PASSWORD': 'EXsgcYSQwMdktRgekonfJgfWaTSPMtlT',
-        'HOST': 'autorack.proxy.rlwy.net',
+        'HOST': 'junction.proxy.rlwy.net',
         'PORT': '59410',
     }
 }

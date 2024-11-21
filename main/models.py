@@ -23,7 +23,7 @@ def validate_mobile_number(value):
 class Purchase(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='purchases')
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='purchases')
-    payment_screenshot = models.ImageField(upload_to='tmp/payment_screenshots/')
+    payment_screenshot = models.ImageField(upload_to='payment_screenshots/')
     name = models.CharField(max_length=100 , default='your name')
     mobile_number = models.CharField(
         max_length=10,

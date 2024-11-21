@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.exceptions import ValidationError
 from django.contrib.auth.models import User
 
 
@@ -14,12 +15,21 @@ class Product(models.Model):
         return self.name
 
 
+def validate_mobile_number(value):
+    if not value.isdigit() or len(value) != 10:
+        raise ValidationError('Mobile number must contain exactly 10 digits.')
+
+
 class Purchase(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='purchases')
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='purchases')
     payment_screenshot = models.ImageField(upload_to='tmp/payment_screenshots/')
     name = models.CharField(max_length=100 , default='your name')
-    mobile_number = models.CharField(max_length=20 , default='your number')
+    mobile_number = models.CharField(
+        max_length=10,
+        validators=[validate_mobile_number],
+        default='0000000000'
+    )
     email = models.EmailField(default='example@gmail.com')
     purchased_at = models.DateTimeField(auto_now_add=True)
 
